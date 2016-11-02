@@ -1,0 +1,20 @@
+/*
+	Todo:
+	- Login system
+	- API Endpoints
+	- MongoDB schema
+	- SSL
+*/
+//users
+
+{
+  "type": "admin", //registered, unregistered
+  "pid": {
+	"firstName": "John",
+	"lastName": "Doe",
+	"age": 18,
+	"ssn": 111111111,
+	"state": "Florida",
+	"voted": "yes" // 0 or 1 for voted or not voted. access control here
+  }
+}
