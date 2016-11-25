@@ -1,1 +1,4 @@
-<h1>Hi {{vm.user.firstName}}!!</h1>
+<h1>Hi {{vm.user.firstName}}!</h1>
+<h3 ng-if="vm.user.type==1">You are logged in as a registered voter</h3>
+<h3 ng-if="vm.user.type==2">You are logged in as an unregistered voter</h3>
+<h3 ng-if="vm.user.type==3">You are logged in as an administrator</h3>
