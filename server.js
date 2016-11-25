@@ -28,6 +28,7 @@ serve('127.0.0.1', 3000);
 */
 
 require('rootpath')();
+var morgan  = require('morgan');
 var express = require('express');
 var app = express();
 var session = require('express-session');
@@ -35,6 +36,7 @@ var bodyParser = require('body-parser');
 var expressJwt = require('express-jwt');
 var config = require('config.json');
  
+app.use(morgan('combined'));//for logging
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 app.use(bodyParser.urlencoded({ extended: false }));
