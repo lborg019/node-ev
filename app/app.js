@@ -5,7 +5,7 @@
         .module('app', ['ui.router'])
         .config(config)
         .run(run);
- 
+    
     function config($stateProvider, $urlRouterProvider) {
         // default route
         $urlRouterProvider.otherwise("/");
@@ -24,6 +24,13 @@
                 controller: 'Account.IndexController',
                 controllerAs: 'vm',
                 data: { activeTab: 'account' }
+            })
+            .state('vote', {
+                url: '/vote',
+                templateUrl: 'vote/index.html',
+                controller: 'Vote.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'vote' }
             });
     }
  

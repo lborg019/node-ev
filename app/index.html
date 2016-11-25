@@ -9,7 +9,8 @@
 </head>
 <body class="container">
     <!-- header -->
-    <header>
+    <!-- we comment out the header from app, and move it to where we have user.service access -->
+    <!--<header>
         <ul class="nav nav-tabs">
             <li ng-class="{active: activeTab === 'home'}"><a ui-sref="home">Home</a></li>
             <li ng-class="{active: activeTab === 'account'}"><a ui-sref="account">Account</a></li>
@@ -18,7 +19,9 @@
         <div class="flash-message" ng-if="flash">
             <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
         </div>
-    </header>
+        <h1>Hi {{x}}!</h1>
+    </header>-->
+    <header></header>
  
     <!-- main -->
     <main ui-view></main>
@@ -37,5 +40,6 @@
     <script src="app-services/flash.service.js"></script>
     <script src="home/index.controller.js"></script>
     <script src="account/index.controller.js"></script>
+    <script src="vote/index.controller.js"></script>
 </body>
 </html>

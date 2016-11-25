@@ -1,3 +1,14 @@
+<!--header-->
+<ul class="nav nav-tabs">
+    <li ng-class="{active: activeTab === 'home'}"><a ui-sref="home">Home</a></li>
+    <li ng-class="{active: activeTab === 'account'}"><a ui-sref="account">Account</a></li>
+    <li ng-if="vm.user.status==0" ng-class="{active: activeTab === 'vote'}"><a ui-sref="vote">Vote</a></li>
+    <li><a href="/login" target="_self">Logout</a></li>
+</ul>
+<div class="flash-message" ng-if="flash">
+    <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+</div>
+
 <h1>My Account</h1>
 <div class="form-container">
     <form method="post">
