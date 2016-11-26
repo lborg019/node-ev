@@ -31,6 +31,20 @@
                 controller: 'Vote.IndexController',
                 controllerAs: 'vm',
                 data: { activeTab: 'vote' }
+            })
+            .state('presidential', {
+                url: '/presidential',
+                templateUrl: 'presidential/index.html',
+                controller: 'Presidential.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'vote' }
+            })
+            .state('california', {
+                url: '/california',
+                templateUrl: 'california/index.html',
+                controller: 'California.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'vote' }
             });
     }
  

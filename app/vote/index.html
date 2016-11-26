@@ -2,17 +2,15 @@
 <ul class="nav nav-tabs">
     <li ng-class="{active: activeTab === 'home'}"><a ui-sref="home">Home</a></li>
     <li ng-class="{active: activeTab === 'account'}"><a ui-sref="account">Account</a></li>
-    <li ng-if="vm.user.status==0" ng-class="{active: activeTab === 'vote'}"><a ui-sref="vote">Vote</a></li>
+    <li ng-if="vm.user.e1Status==0 || vm.user.e2Status==0" ng-class="{active: activeTab === 'vote'}"><a ui-sref="vote">Vote</a></li>
     <li><a href="/login" target="_self">Logout</a></li>
 </ul>
 <div class="flash-message" ng-if="flash">
     <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
 </div>
 
-<h1>Hi {{vm.user.firstName}}!</h1>
-<h3 ng-if="vm.user.type==1">You are logged in as a registered voter</h3>
-<h3 ng-if="vm.user.type==2">You are logged in as an unregistered voter</h3>
-<h3 ng-if="vm.user.type==3">You are logged in as an administrator</h3>
-
-<h3 ng-if="vm.user.status==1">You have already voted</h3>
-<h3 ng-if="vm.user.status==0">You have not voted yet</h3>
+<h3>Available Elections:</h3>
+<ul>
+    <li ng-if="vm.user.e1Status==0"><a ui-sref="account">2016 presidential elections</a></li>
+    <li ng-if="vm.user.state=='California' && vm.user.e2Status==0"><a ui-sref="account">2016 California state elections</a></li>
+</ul>
