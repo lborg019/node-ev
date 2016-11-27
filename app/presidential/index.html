@@ -10,54 +10,22 @@
 </div>
 
 <h1>Presidential Elections:</h1>
-
 <!-- Ballot -->
-<table class="table table-hover" style="cursor: hand;">
-    <tr>
-        <th>Candidate</th>
-        <th>Name</th>
-        <th>Party</th>
-    </tr>
-
-    <!-- instantiate candidates programatically with database -->
-    
-    <!--
-        traverse candidate list
-        and <td>{{vm.candidate.avatar}}</td>
-            <td>{{vm.candidate.fullName}}</td>
-            <td>{{vm.candidate.party}}</td>
-    -->
-    <tr role="button" href="#">
-        <td rowspan="1" style="width:300px;"><img src="./app-content/avatars/presidential/bernie_blue.svg" width="200" height="200" alt="Bernie"></td>
-        <td style="vertical-align: middle" colspan="1"><h3>Bernie Sanders</h3></td>
-        <td style="vertical-align: middle"><h3>Democratic</h3></td>
-    </tr>
-
-    <tr role="button">
-        <td rowspan="1" style="width:300px;"><img src="./app-content/avatars/presidential/cruz_pink.svg" width="200" height="200" alt="Bernie"></td>
-        <td style="vertical-align: middle" colspan="1"><h3>Ted Cruz</h3></td>
-        <td style="vertical-align: middle"><h3>Republican</h3></td>
-    </tr>
-
-    <tr role="button">
-        <td rowspan="1" style="width:300px;"><img src="./app-content/avatars/presidential/hillary_blue.svg" width="200" height="200" alt="Bernie"></td>
-        <td style="vertical-align: middle" colspan="1"><h3>Hillary Clinton</h3></td>
-        <td style="vertical-align: middle"><h3>Democratic</h3></td>
-    </tr>
-
-    <tr role="button">
-        <td rowspan="1" style="width:300px;"><img src="./app-content/avatars/presidential/kasich_pink.svg" width="200" height="200" alt="Bernie"></td>
-        <td style="vertical-align: middle" colspan="1"><h3>John Kasich</h3></td>
-        <td style="vertical-align: middle"><h3>Republican</h3></td>
-    </tr>
-
-    <tr role="button">
-        <td rowspan="1" style="width:300px;"><img src="./app-content/avatars/presidential/trump_pink.svg" width="200" height="200" alt="Bernie"></td>
-        <td style="vertical-align: middle" colspan="1"><h3>Donald Trump</h3></td>
-        <td style="vertical-align: middle"><h3>Republican</h3></td>
-    </tr>
-    <!--<tr><td colspan="3">Row 3 Cell 1</td></tr>-->
-</table>
+<div ng-controller="candidatesController">
+    <table class="table table-hover" style="cursor:hand;" >
+        <tr>
+            <th>Candidate</th>
+            <th>Name</th>
+            <th>Party</th>
+        </tr>
+        <tr ng-repeat="x in candidates">
+            <td><img src={{x.avatar}}></td>
+            <td style="vertical-align: middle" colspan="1"><h3>{{x.name}}</h3></td>
+            <td style="vertical-align: middle" colspan="1"><h3>{{x.party}}</h3></td>
+        </tr>
+        
+    </table>
+</div>
 
 <ul style="text-align:center">
     <button ng-click="getAllSelectedRow()" class="btn btn-primary btn-lg">Confirm</button>
