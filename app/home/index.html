@@ -2,7 +2,7 @@
 <ul class="nav nav-tabs">
     <li ng-class="{active: activeTab === 'home'}"><a ui-sref="home">Home</a></li>
     <li ng-class="{active: activeTab === 'account'}"><a ui-sref="account">Account</a></li>
-    <li ng-if="vm.user.e1Status==0 || vm.user.e2Status==0" ng-class="{active: activeTab === 'vote'}"><a ui-sref="vote">Vote</a></li>
+    <li ng-if="vm.user.type==1" ng-class="{active: activeTab === 'vote'}"><a ui-sref="vote">Vote</a></li>
     <li><a href="/login" target="_self">Logout</a></li>
 </ul>
 <div class="flash-message" ng-if="flash">

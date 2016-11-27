@@ -11,6 +11,7 @@
 
 <h3>Available Elections:</h3>
 <ul>
-    <li ng-if="vm.user.e1Status==0"><a ui-sref="account">2016 presidential elections</a></li>
-    <li ng-if="vm.user.state=='California' && vm.user.e2Status==0"><a ui-sref="account">2016 California state elections</a></li>
+    <li ng-if="vm.user.e1Status==0"><a ui-sref="presidential">2016 presidential elections</a></li>
+    <li ng-if="vm.user.state=='California' && vm.user.e2Status==0"><a ui-sref="california">2016 California state elections</a></li>
+    <li ng-if="vm.user.e1Status==1 && vm.user.e2Status==1">No elections available</li>
 </ul>
