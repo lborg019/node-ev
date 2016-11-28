@@ -1,6 +1,8 @@
 var myApp = this.angular.module('app');
 
 myApp.controller('candidatesController', function($scope) {
+  $scope.selectedRow = null;
+
   $scope.candidates = [{
     name:'Bernie Sanders',
     party:'Democratic',
@@ -30,4 +32,28 @@ myApp.controller('candidatesController', function($scope) {
     party:'Republican',
     avatar:'./app-content/avatars/presidential/cruz_pink.svg'
   }];
+
+  $scope.setClickedRow = function(index){
+    $scope.selectedRow = index;
+  }
+
+  $scope.clearRow = function(){
+    $scope.selectedRow = null;
+    //console.log('Cleared candidate selection');
+  }
+
+  $scope.confirm = function(){
+    if($scope.selectedRow==null){ 
+      console.log('Confirmed a null vote');
+    }
+    else
+    {
+      console.log('Confirmed a vote for '+$scope.selectedRow);
+    }
+  }
+
+  $scope.$watch('selectedRow', function(){
+    console.log('Selected a candidate');
+  });
+
 });

@@ -9,29 +9,60 @@
     <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
 </div>
 
-<h1>Presidential Elections:</h1>
+<style>
+.selected{
+    background-color: rgba(70,130,70,0.5); 
+    font-style:italic;
+    color: black;
+}
+</style>
+
+<!-- make title programatically -->
+<h1> presidential elections</h1>
+<p><h4>click to select your candidate:</h4></p>
 <!-- Ballot -->
 <div ng-controller="candidatesController">
     <table class="table table-hover" style="cursor:hand;" >
         <tr>
-            <th>Candidate</th>
-            <th>Name</th>
-            <th>Party</th>
+            <th style="visibility: hidden">#</th>
+            <th style="text-align: center"><h4>Candidate</h4></th>
+            <th style="text-align: center"><h4>Name</h4></th>
+            <th style="text-align: center"><h4>Party</h4></th>
         </tr>
-        <tr ng-repeat="x in candidates">
-            <td><img src={{x.avatar}}></td>
-            <td style="vertical-align: middle" colspan="1"><h3>{{x.name}}</h3></td>
-            <td style="vertical-align: middle" colspan="1"><h3>{{x.party}}</h3></td>
+        <tr ng-repeat="c in candidates" ng-class="{'selected':$index == selectedRow}" ng-click="setClickedRow($index)" role="button">
+            <td style="visibility:hidden">{{$index}}</td>
+            <td style="width:12vmax"><img src={{c.avatar}}></td>
+            <td style="vertical-align: middle; text-align: center" colspan="1"><h3>{{c.name}}</h3></td>
+            <td style="vertical-align: middle; text-align: center" colspan="1"><h3>{{c.party}}</h3></td>
         </tr>
-        
     </table>
-</div>
 
-<ul style="text-align:center">
-    <button ng-click="getAllSelectedRow()" class="btn btn-primary btn-lg">Confirm</button>
-    <button ng-click="getAllSelectedRow()" class="btn btn-secondary btn-lg">Clear</button>
-    <button ui-sref="vote" class="btn btn-secondary btn-lg">Back</button>
-</ul>
+    <!-- buttons -->
+    <div style="text-align:center">
+        <button ng-click="confirm()" class="btn btn-primary btn-lg">Confirm</button>
+        <button ng-click="clearRow()" class="btn btn-secondary btn-lg">Clear</button>
+        <button ui-sref="vote" class="btn btn-secondary btn-lg">Back</button>
+    </div>
+
+    <!-- output (for testing) -->
+    <div>
+        selectedRow = {{selectedRow}}
+    </div>
+    <div>
+        candidate = {{candidates[selectedRow].name}}
+    </div>
+
+    <!-- small modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                ...
+                </div>
+            </div>
+        </div>
+
+</div>
 
 <!--<div class="btn-group" role="group" aria-label="...">
   <button type="button" class="btn btn-default">Left</button>
