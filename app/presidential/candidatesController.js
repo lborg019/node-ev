@@ -1,9 +1,14 @@
 var myApp = this.angular.module('app');
 
-myApp.controller('candidatesController', function($scope) {
+myApp.controller('candidatesController', ['$scope', 'ElectionService', function($scope, electionService) {
   $scope.selectedRow = null;
 
-  $scope.candidates = [{
+  electionService.GetAll().then(function(data) {
+    
+    $scope.x = data;
+  });
+  
+  /*$scope.candidates = [{
     name:'Bernie Sanders',
     party:'Democratic',
     avatar:'./app-content/avatars/presidential/bernie_blue.svg'
@@ -31,7 +36,7 @@ myApp.controller('candidatesController', function($scope) {
     name:'Ted Cruz',
     party:'Republican',
     avatar:'./app-content/avatars/presidential/cruz_pink.svg'
-  }];
+  }];*/
 
   $scope.setClickedRow = function(index){
     $scope.selectedRow = index;
@@ -56,4 +61,4 @@ myApp.controller('candidatesController', function($scope) {
     console.log('Selected a candidate');
   });
 
-});
+}]);
