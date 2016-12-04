@@ -8,6 +8,7 @@ router.post('/createElection', createElection);
 router.get('/getAllElections', getAllElections);
 router.put('/:_id', updateElection);
 router.delete('/:_id', deleteElection);
+router.put('/addVoteCandidate', addVoteCandidate);    
  
 module.exports = router;
  
@@ -48,13 +49,27 @@ function updateElection(req, res) {
 }
  
 function deleteElection(req, res) {
-    var electionId = req.user.sub;
+    var electionId = req.election.sub;
 
     electionService.delete(electionId)
         .then(function () {
             res.sendStatus(200);
         })
         .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+function addVoteCandidate(req, res){
+    var candidate = req.candidate.sub;
+    //var candidate = "Bernie Sanders"
+    console.log("trying to add!")
+
+    electionService.addVote(candidate)
+        .then(function(){
+            res.sendStatus(200);
+        })
+        .catch(function (err){
             res.status(400).send(err);
         });
 }

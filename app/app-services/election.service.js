@@ -11,6 +11,7 @@
         election.GetCurrent = GetCurrent;
         election.GetAll = GetAll;
         election.GetById = GetById;
+        election.AddVote = AddVote;
         election.GetByElectionName = GetByElectionName;
         election.Create = Create;
         election.Update = Update;
@@ -28,6 +29,18 @@
  
         function GetById(_id) {
             return $http.get('/api/elections/' + _id).then(handleSuccess, handleError);
+        }
+
+        function AddVote(candidate){
+            console.log('called addVote for '+ candidate);
+            //return $http.put('/api/elections/addVote/' + election._id, candidate).then(handleSuccess, handleError);
+            //return $http.put('/api/elections/addVoteCandidate', candidate).then(handleSuccess, handleError);
+            //db.elections.update({"candidates.name":"Bernie Sanders"}, {$inc: {"candidates.$.votes":+1}})
+            return $http.put('/api/elections/addVoteCandidate', function (req, res){ res.send(candidate) }).then(handleSuccess, handleError);
+
+            /*app.put('/user', function (req, res) {
+              res.send('Got a PUT request at /user')
+            })*/
         }
  
         function GetByElectionName(electionname) {
@@ -49,7 +62,7 @@
         // private functions
  
         function handleSuccess(res) {
-            //console.log(res);
+            console.log(res);
             return res.data;
         }
  

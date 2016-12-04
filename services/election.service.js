@@ -14,6 +14,7 @@ var service = {};
 service.getAll = getAll;
 service.create = create;
 service.update = update;
+service.addVote = addVote;
 service.delete = _delete;
 
 module.exports = service;
@@ -125,6 +126,32 @@ function _delete(_id) {
 
             deferred.resolve();
         });
+
+    return deferred.promise;
+}
+
+function addVote(candidateVoted){
+    var deferred = Q.defer();
+
+    //to fetch candidate by name:
+    //db.elections.find({"candidates.name": "Bernie Sanders"}, {_id:0, candidates: {$elemMatch: {name:"Bernie Sanders"}}})
+    //or
+    //db.elections.aggregate({$match: {"candidates.name":"Donald Trump"}}, {$unwind: "$candidates"}, {$match: {"candidates.name": "Donald Trump"}})
+
+    //add vote to such candidate:
+    //db.elections.update({"candidates.name":"Bernie Sanders"}, {$inc: {"candidates.$.votes"}})
+    
+    db.elections.update({
+            "candidates.name":candidateVoted
+        }, {
+            $inc: {"candidates.$.votes":+1}
+        },
+        function(err, doc) {
+            if (err) deferred.reject(err);
+
+            deferred.resolve();
+
+    });
 
     return deferred.promise;
 }
