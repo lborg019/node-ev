@@ -17,11 +17,11 @@
 }
 </style>
 
-<!-- make title programatically -->
-<h1> california state elections</h1>
-<p><h4>click to select your candidate:</h4></p>
 <!-- Ballot -->
 <div ng-controller="stateCandidatesController">
+    <!-- make title programatically -->
+    <h1>{{eName}}</h1>
+    <p><h4>click to select your candidate:</h4></p>
     <table class="table table-hover" style="cursor:hand;" >
         <tr>
             <th style="visibility: hidden">#</th>
@@ -37,19 +37,15 @@
         </tr>
     </table>
 
+    <div>
+        <!--selectedRow = {{selectedRow}}-->
+        <h3>Selected candidate: {{candidates[selectedRow].name}}</h3>
+    </div>
     <!-- buttons -->
     <div style="text-align:center">
         <button ng-click="confirm()" class="btn btn-primary btn-lg">Confirm</button>
         <button ng-click="clearRow()" class="btn btn-secondary btn-lg">Clear</button>
         <button ui-sref="vote" class="btn btn-secondary btn-lg">Back</button>
-    </div>
-
-    <!-- output (for testing) -->
-    <div>
-        selectedRow = {{selectedRow}}
-    </div>
-    <div>
-        candidate = {{candidates[selectedRow].name}}
     </div>
 
     <!-- small modal -->

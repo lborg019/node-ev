@@ -1,91 +1,62 @@
-//presidential election
+/*
+	MongoDB
+	Collection name: elections
+*/
 
+//Presidential election:
 {
-	"candidate": {
-		"name": "Donald Trump",
-		"party": "Republican",
-		"election": "presidential",
-		"votes": {
-			"Alabama": 0,
-			"Alaska": 0,
-			"Arizona": 0,
-			"Arkansas": 0,
-			"California": 0,
-			"Colorado": 0,
-			"Connecticut": 0,
-			"Delaware": 0,
-			"Florida": 0,
-			"Georgia": 0,
-			"Hawaii": 0,
-			"Idaho": 0,
-			"Illinois": 0,
-			"Indiana": 0,
-			"Iowa": 0,
-			"Kansas": 0,
-			"Kentucky": 0,
-			"Louisiana": 0,
-			"Maine": 0,
-			"Maryland": 0,
-			"Massachusetts": 0,
-			"Michigan": 0,
-			"Minnesota": 0,
-			"Mississippi": 0,
-			"Missouri": 0,
-			"Montana": 0,
-			"Nebraska": 0,
-			"Nevada": 0,
-			"New Hampshire": 0,
-			"New Jersey": 0,
-			"New Mexico": 0,
-			"New York": 0,
-			"North Carolina": 0,
-			"North Dakota": 0,
-			"Ohio": 0,
-			"Oklahoma": 0,
-			"Oregon": 0,
-			"Pennsylvania": 0,
-			"Rhode Island": 0,
-			"South Carolina": 0,
-			"South Dakota": 0,
-			"Tennessee": 0,
-			"Texas": 0,
-			"Utah": 0,
-			"Vermont": 0,
-			"Virginia": 0,
-			"Washington": 0,
-			"West Virginia": 0,
-			"Wisconsin": 0,
-			"Wyoming": 0
-		}
-	},
-	"candidate":{
-		"name": "Hillary Clinton",
-		"party": "Democratic",
-		"election": "presidential",
-		"votes": 0
-	},
-	"candidate":{
-		"name": "Gary Johnson",
-		"party": "Libertarian",
-		"election": "presidential",
-		"votes": 0
-	},
-	"candidate":{
-		"name": "Jill Stein",
-		"party": "Green",
-		"election": "presidential",
-		"votes": 0
-	},
-	"candidate":{
-		"name": "Evan McMullin",
-		"party": "Independent",
-		"election": "presidential",
-		"votes": 0
-	},
-	"candidate":{
-		"name": "Arnold Schwarzenegger",
-		"party": "Republican",
-		"election": "state",
-		"votes": 0
-	}
+    "electionname" : "2016 presidential elections",
+    "state" : "all",
+    "candidates" : [ 
+        {
+            "name" : "Bernie Sanders",
+            "party" : "Democratic",
+            "avatar" : "./app-content/avatars/presidential/bernie_blue.svg",
+            "votes" : 0
+        }, 
+        {
+            "name" : "Donald Trump",
+            "party" : "Republican",
+            "avatar" : "./app-content/avatars/presidential/trump_pink.svg",
+            "votes" : 0
+        }, 
+        {
+            "name" : "Hillary Clinton",
+            "party" : "Democratic",
+            "avatar" : "./app-content/avatars/presidential/hillary_blue.svg",
+            "votes" : 0
+        }, 
+        {
+            "name" : "John Kasich",
+            "party" : "Republican",
+            "avatar" : "./app-content/avatars/presidential/kasich_pink.svg",
+            "votes" : 0
+        }, 
+        {
+            "name" : "Ted Cruz",
+            "party" : "Republican",
+            "avatar" : "./app-content/avatars/presidential/cruz_pink.svg",
+            "votes" : 0
+        }
+    ]
+}
+
+//California State elections:
+{
+    "electionname" : "California state elections",
+    "state" : "CA",
+    "candidates" : [ 
+        {
+            "name" : "Arnold Schwarzenegger",
+            "party" : "Republican",
+            "avatar" : "./app-content/avatars/CA-state/arnold.svg",
+            "votes" : 0
+        }, 
+        {
+            "name" : "Predator",
+            "party" : "Alien",
+            "avatar" : "./app-content/avatars/CA-state/predator.svg",
+            "votes" : 0
+        }
+    ]
 }

@@ -2,41 +2,16 @@ var myApp = this.angular.module('app');
 
 myApp.controller('candidatesController', ['$scope', 'ElectionService', function($scope, electionService) {
   $scope.selectedRow = null;
+  
+  $scope.eName = null;
+  $scope.candidates = null;
 
   electionService.GetAll().then(function(data) {
     
-    $scope.x = data;
+    //hardcoded data[0] means presidential elections
+    $scope.eName = data[0].electionname;
+    $scope.candidates = data[0].candidates;
   });
-  
-  /*$scope.candidates = [{
-    name:'Bernie Sanders',
-    party:'Democratic',
-    avatar:'./app-content/avatars/presidential/bernie_blue.svg'
-  },
-
-  {
-    name:'Donald Trump',
-    party:'Republican',
-    avatar:'./app-content/avatars/presidential/trump_pink.svg'
-  },
-
-  {
-    name:'Hillary Clinton',
-    party:'Democratic',
-    avatar:'./app-content/avatars/presidential/hillary_blue.svg'
-  },
-
-  {
-    name:'John Kasich',
-    party:'Republican',
-    avatar:'./app-content/avatars/presidential/kasich_pink.svg'
-  },
-  
-  {
-    name:'Ted Cruz',
-    party:'Republican',
-    avatar:'./app-content/avatars/presidential/cruz_pink.svg'
-  }];*/
 
   $scope.setClickedRow = function(index){
     $scope.selectedRow = index;

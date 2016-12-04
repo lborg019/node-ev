@@ -17,11 +17,10 @@
 }
 </style>
 
-<!-- make title programatically -->
-<h1> presidential elections</h1>
-<p><h4>click to select your candidate:</h4></p>
 <!-- Ballot -->
 <div ng-controller="candidatesController">
+    <h1>{{eName}}</h1><!--title-->
+    <p><h4>click to select your candidate:</h4></p>
     <table class="table table-hover" style="cursor:hand;" >
         <tr>
             <th style="visibility: hidden">#</th>
@@ -31,40 +30,23 @@
         </tr>
         <tr ng-repeat="c in candidates" ng-class="{'selected':$index == selectedRow}" ng-click="setClickedRow($index)" role="button">
             <td style="visibility:hidden">{{$index}}</td>
-            <td style="width:12vmax"><img src={{c.avatar}}></td>
+            <td style="width:12vmax"><img src={{c.avatar}} style="max-width:150px"></td>
             <td style="vertical-align: middle; text-align: center" colspan="1"><h3>{{c.name}}</h3></td>
             <td style="vertical-align: middle; text-align: center" colspan="1"><h3>{{c.party}}</h3></td>
         </tr>
     </table>
 
+    <div>
+        <!--selectedRow = {{selectedRow}}-->
+        <h3>Selected candidate: {{candidates[selectedRow].name}}</h3>
+    </div>
+
     <!-- buttons -->
-    <div style="text-align:center">
+    <div style="text-align:center">          
         <button ng-click="confirm()" class="btn btn-primary btn-lg">Confirm</button>
         <button ng-click="clearRow()" class="btn btn-secondary btn-lg">Clear</button>
         <button ui-sref="vote" class="btn btn-secondary btn-lg">Back</button>
     </div>
-
-    <!-- output (for testing) -->
-    <div>
-        selectedRow = {{selectedRow}}
-    </div>
-    <div>
-        candidate = {{candidates[selectedRow].name}}
-    </div>
-
-    <div>
-        test = {{x}}
-    </div>    
-
-    <!-- small modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
-        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-            <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content">
-                ...
-                </div>
-            </div>
-        </div>
 
 </div>
 
