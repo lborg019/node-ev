@@ -64,11 +64,11 @@ function create(userParam) {
     return deferred.promise;
 }
 
-function update(_id, userParam) {
+function update(electionname, candidatename) {
     var deferred = Q.defer();
 
     // validation
-    db.elections.findById(_id, function (err, election) {
+    db.elections.findOne({electionname: userParam}, function (err, election) {
         if (err) deferred.reject(err);
 
         if (election.electionname !== userParam.electionname) {
@@ -130,7 +130,7 @@ function _delete(_id) {
     return deferred.promise;
 }
 
-function addVote(candidateVoted){
+function addVote(electionname, candidatename){
     var deferred = Q.defer();
 
     //to fetch candidate by name:
@@ -139,10 +139,10 @@ function addVote(candidateVoted){
     //db.elections.aggregate({$match: {"candidates.name":"Donald Trump"}}, {$unwind: "$candidates"}, {$match: {"candidates.name": "Donald Trump"}})
 
     //add vote to such candidate:
-    //db.elections.update({"candidates.name":"Bernie Sanders"}, {$inc: {"candidates.$.votes"}})
+    //db.elections.update({"candidates.name":"Bernie Sanders"}, {$inc: {"candidates.$.votes":+1}})
     
-    db.elections.update({
-            "candidates.name":candidateVoted
+    db.elections.update({ 
+            "candidates.name": candidatename
         }, {
             $inc: {"candidates.$.votes":+1}
         },
@@ -152,6 +152,8 @@ function addVote(candidateVoted){
             deferred.resolve();
 
     });
+
+    console.log("We Got here!");
 
     return deferred.promise;
 }

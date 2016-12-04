@@ -37,9 +37,8 @@ function getAllElections(req, res) {
 }
  
 function updateElection(req, res) {
-    var electionId = req.election.sub;
 
-    electionService.update(electionId, req.body)
+    electionService.addVote(req.body.electionname, req.body.candidatename)
         .then(function () {
             res.sendStatus(200);
         })
@@ -61,15 +60,15 @@ function deleteElection(req, res) {
 }
 
 function addVoteCandidate(req, res){
-    var candidate = req.candidate.sub;
+    var candidate = req.candidate;
     //var candidate = "Bernie Sanders"
-    console.log("trying to add!")
+    console.log(req);
 
-    electionService.addVote(candidate)
+    /*electionService.addVote(candidate)
         .then(function(){
             res.sendStatus(200);
         })
         .catch(function (err){
             res.status(400).send(err);
-        });
+        });*/
 }

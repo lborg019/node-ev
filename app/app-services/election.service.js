@@ -32,15 +32,10 @@
         }
 
         function AddVote(candidate){
-            console.log('called addVote for '+ candidate);
-            //return $http.put('/api/elections/addVote/' + election._id, candidate).then(handleSuccess, handleError);
-            //return $http.put('/api/elections/addVoteCandidate', candidate).then(handleSuccess, handleError);
-            //db.elections.update({"candidates.name":"Bernie Sanders"}, {$inc: {"candidates.$.votes":+1}})
-            return $http.put('/api/elections/addVoteCandidate', function (req, res){ res.send(candidate) }).then(handleSuccess, handleError);
+            console.log('addVote('+ candidate+')');
 
-            /*app.put('/user', function (req, res) {
-              res.send('Got a PUT request at /user')
-            })*/
+            return $http.put('/api/elections/addVoteCandidate', {electionname: "2016 presidential elections", candidatename: candidate}).then(handleSuccess, handleError);
+            //db.elections.update({"candidates.name":"Bernie Sanders"}, {$inc: {"candidates.$.votes":+1}})
         }
  
         function GetByElectionName(electionname) {
