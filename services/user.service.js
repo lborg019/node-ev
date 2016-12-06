@@ -14,6 +14,7 @@ service.getById = getById;
 service.create = create;
 service.update = update;
 service.delete = _delete;
+service.vote = vote;
  
 module.exports = service;
  
@@ -140,7 +141,30 @@ function update(_id, userParam) {
  
     return deferred.promise;
 }
- 
+
+function vote(_id, electionname){
+
+    var deferred=Q.defer();
+
+    if(electionname=="Presidential election")
+        var set = { "e1Status":"1" }
+
+    if(electionname=="California state election")
+        var set = { "e2Status":"1"}
+
+    console.log('services/user.service.js/vote()');
+    //console.log(_id);
+
+    db.users.update(
+        {_id: mongo.helper.toObjectID(_id)},
+        {$set: set},
+        function (err){
+            if (err) deferred.reject(err);
+            deferred.resolve();
+        });
+    return deferred.promise;
+}
+
 // prefixed function name with underscore because 'delete' is a reserved word in javascript
 function _delete(_id) {
     var deferred = Q.defer();

@@ -31,9 +31,10 @@
             return $http.get('/api/elections/' + _id).then(handleSuccess, handleError);
         }
 
-        function AddVote(candidate){
+        function AddVote(candidate, eName){
             //console.log('addVote('+ candidate+')');
-            return $http.put('/api/elections/addVoteCandidate', {electionname: "2016 presidential elections", candidatename: candidate}).then(handleSuccess, handleError);
+            //return $http.put('/api/elections/addVoteCandidate', {electionname: "2016 presidential elections", candidatename: candidate}).then(handleSuccess, handleError);
+            return $http.put('/api/elections/addVoteCandidate', {electionname: eName, candidatename: candidate}).then(handleSuccess, handleError);
         }
  
         function GetByElectionName(electionname) {

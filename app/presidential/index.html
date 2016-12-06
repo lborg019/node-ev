@@ -19,6 +19,12 @@
 
 <!-- Ballot -->
 <div ng-controller="candidatesController">
+    <div ng-show="voted && loaded">
+        <h1>Congrats, you voted!</h1>
+    </div>
+
+<div ng-show="!voted && loaded">
+
     <h1>{{eName}}</h1><!--title-->
     <p><h4>click to select your candidate:</h4></p>
     <table class="table table-hover" style="cursor:hand;" >
@@ -48,6 +54,7 @@
         <button ui-sref="vote" class="btn btn-secondary btn-lg">Back</button>
     </div>
 
+</div>
 </div>
 
 <!--<div class="btn-group" role="group" aria-label="...">

@@ -61,6 +61,7 @@ function deleteElection(req, res) {
 
 function addVoteCandidate(req, res){
     var candidate = req.candidate;
+    var electionname = req.electionname
     //var candidate = "Bernie Sanders"
     console.log(req);
 

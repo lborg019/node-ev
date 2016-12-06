@@ -7,7 +7,7 @@
 {
     "electionname" : "2016 presidential elections",
     "state" : "all",
-    "route": "/presidential",
+    "route": "presidential",
     "candidates" : [ 
         {
             "name" : "Bernie Sanders",

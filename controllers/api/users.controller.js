@@ -9,8 +9,26 @@ router.post('/register', registerUser);
 router.get('/current', getCurrentUser);
 router.put('/:_id', updateUser);
 router.delete('/:_id', deleteUser);
+router.post('/vote/:_id', voteUser); //registers vote
  
 module.exports = router;
+
+function voteUser(req, res, next){
+    var userId = req.user.sub;
+    var electionname = req.body.electionname;
+    if(req.params._id !== userId){
+        //can only vote for your own account
+        return res.status(401).send('You can only vote on your own account');
+    }
+
+    userService.vote(userId, electionname)
+        .then(function() {
+            res.sendStatus(200);
+        })
+        .catch(function(err){
+            res.status(400).send(err);
+        });
+}
  
 function authenticateUser(req, res) {
     userService.authenticate(req.body.username, req.body.password)
