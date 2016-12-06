@@ -2,16 +2,31 @@
 <ul class="nav nav-tabs">
     <li ng-class="{active: activeTab === 'home'}"><a ui-sref="home">Home</a></li>
     <li ng-class="{active: activeTab === 'account'}"><a ui-sref="account">Account</a></li>
-    <li ng-if="vm.user.e1Status==0 || vm.user.e2Status==0" ng-class="{active: activeTab === 'vote'}"><a ui-sref="vote">Vote</a></li>
+    <li ng-if="vm.user.type==1" ng-class="{active: activeTab === 'vote'}"><a ui-sref="vote">Vote</a></li>
+    <li ng-if="vm.user.type==2" ng-class="{active: activeTab === 'register'}"><a ui-sref="register">Register</a></li>
+    <li ng-if="vm.user.type==3" ng-class="{active: activeTab === 'manager'}"><a ui-sref="manager">Manager</a></li>
     <li><a href="/login" target="_self">Logout</a></li>
 </ul>
 <div class="flash-message" ng-if="flash">
     <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
 </div>
 
-<h3>Available Elections:</h3>
-<ul>
-    <li ng-if="vm.user.e1Status==0"><a ui-sref="presidential">2016 presidential elections</a></li>
-    <li ng-if="vm.user.state=='California' && vm.user.e2Status==0"><a ui-sref="california">2016 California state elections</a></li>
-    <li ng-if="vm.user.e1Status==1 && vm.user.e2Status==1">No elections available</li>
-</ul>
+<style>
+.customRow{
+    vertical-align: middle; 
+    text-align: center;
+}
+</style>
+
+<!--available elections are shown programatically and filtered "semi"-programatically-->
+<div ng-controller="voteController">
+    <h3>Available Elections:</h3>
+     <div ng-if="vm.user.e1Status==1 && vm.user.e2Status==1"><h3>No elections available</h3></div>
+
+     <table class="table table-hover" style="cursor:hand;" >
+        <tr ng-repeat="c in array" ng-class="{'selected':$index == selectedRow}" ng-click="setClickedRow($index)" role="button">
+            <td ng-if="vm.user.e1Status==0 && c.state=='all'" class='customRow' colspan="1"><h3><a ng-href="/app/#/{{c.route}}">{{c.electionname}}</a></h3></td>
+            <td ng-if="vm.user.state=='California' && c.state=='CA' && vm.user.e2Status==0" class='customRow' colspan="1"><h3><a ng-href="/app/#/{{c.route}}">{{c.electionname}}</a></h3></td>
+        </tr>
+    </table>
+</div>

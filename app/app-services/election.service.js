@@ -32,10 +32,8 @@
         }
 
         function AddVote(candidate){
-            console.log('addVote('+ candidate+')');
-
+            //console.log('addVote('+ candidate+')');
             return $http.put('/api/elections/addVoteCandidate', {electionname: "2016 presidential elections", candidatename: candidate}).then(handleSuccess, handleError);
-            //db.elections.update({"candidates.name":"Bernie Sanders"}, {$inc: {"candidates.$.votes":+1}})
         }
  
         function GetByElectionName(electionname) {
@@ -57,7 +55,7 @@
         // private functions
  
         function handleSuccess(res) {
-            console.log(res);
+            //console.log(res);
             return res.data;
         }
  

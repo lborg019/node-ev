@@ -3,7 +3,7 @@
  
     angular
         .module('app')
-        .controller('Vote.IndexController', Controller);
+        .controller('Register.IndexController', Controller);
  
     function Controller(UserService) {
         var vm = this;

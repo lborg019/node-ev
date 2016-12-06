@@ -45,6 +45,20 @@
                 controller: 'California.IndexController',
                 controllerAs: 'vm',
                 data: { activeTab: 'vote' }
+            })
+            .state('manager', {
+                url: '/manager',
+                templateUrl: 'manager/index.html',
+                controller: 'Manager.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'manager' }
+            })
+            .state('register', {
+                url: '/register',
+                templateUrl: 'register/index.html',
+                controller: 'Manager.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'register' }
             });
     }
  
