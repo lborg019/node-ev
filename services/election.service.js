@@ -153,7 +153,7 @@ function addVote(electionname, candidatename){
 
     });
 
-    console.log("We Got here!");
+    //console.log("We Got here!");
 
     return deferred.promise;
 }

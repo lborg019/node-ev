@@ -146,9 +146,10 @@ function vote(_id, electionname){
 
     var deferred=Q.defer();
 
+    console.log("services/userservice.js: "+ electionname)
+
     if(electionname=="Presidential election")
         var set = { "e1Status":"1" }
-
     if(electionname=="California state election")
         var set = { "e2Status":"1"}
 

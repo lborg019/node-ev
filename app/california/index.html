@@ -19,7 +19,15 @@
 
 <!-- Ballot -->
 <div ng-controller="stateCandidatesController">
-    <!-- make title programatically -->
+
+    <div ng-show="voted && loaded">
+        <h1>Congratulations!</h1>
+        <h2>You voted for the {{eName}}</h2>
+        <button ui-sref="vote" class="btn btn-secondary btn-lg">Back</button>
+    </div>
+
+<div ng-show="!voted && loaded">
+    <!-- title is fetched programatically -->
     <h1>{{eName}}</h1>
     <p><h4>click to select your candidate:</h4></p>
     <table class="table table-hover" style="cursor:hand;" >
@@ -47,17 +55,7 @@
         <button ng-click="clearRow()" class="btn btn-secondary btn-lg">Clear</button>
         <button ui-sref="vote" class="btn btn-secondary btn-lg">Back</button>
     </div>
-
-    <!-- small modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
-        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-            <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content">
-                ...
-                </div>
-            </div>
-        </div>
-
+ </div>
 </div>
 
 <!--<div class="btn-group" role="group" aria-label="...">

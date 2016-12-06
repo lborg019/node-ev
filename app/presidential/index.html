@@ -20,7 +20,9 @@
 <!-- Ballot -->
 <div ng-controller="candidatesController">
     <div ng-show="voted && loaded">
-        <h1>Congrats, you voted!</h1>
+        <h1>Congratulations!</h1>
+        <h2>You voted for the {{eName}}</h2>
+        <button ui-sref="vote" class="btn btn-secondary btn-lg">Back</button>
     </div>
 
 <div ng-show="!voted && loaded">
