@@ -2,18 +2,17 @@
 	MongoDB
 	Collection name: elections
 */
-
-//Presidential election:
 {
-    "electionname" : "2016 presidential elections",
+    "_id" : ObjectId("584326f4de11cc88bee98b89"),
+    "electionname" : "Presidential election",
     "state" : "all",
-    "route": "presidential",
+    "route" : "presidential",
     "candidates" : [ 
         {
             "name" : "Bernie Sanders",
             "party" : "Democratic",
             "avatar" : "./app-content/avatars/presidential/bernie_blue.svg",
-            "votes" : 0
+            "votes" : 16
         }, 
         {
             "name" : "Donald Trump",
@@ -25,7 +24,7 @@
             "name" : "Hillary Clinton",
             "party" : "Democratic",
             "avatar" : "./app-content/avatars/presidential/hillary_blue.svg",
-            "votes" : 0
+            "votes" : 1
         }, 
         {
             "name" : "John Kasich",
@@ -44,21 +43,22 @@
 
 //California State elections:
 {
-    "electionname" : "California state elections",
+    "_id" : ObjectId("584389f2de11cc88bee98b8a"),
+    "electionname" : "California state election",
     "state" : "CA",
-    "route:" : "california",
+    "route" : "california",
     "candidates" : [ 
         {
             "name" : "Arnold Schwarzenegger",
             "party" : "Republican",
             "avatar" : "./app-content/avatars/CA-state/arnold.svg",
-            "votes" : 0
+            "votes" : 8
         }, 
         {
             "name" : "Predator",
             "party" : "Alien",
             "avatar" : "./app-content/avatars/CA-state/predator.svg",
-            "votes" : 0
+            "votes" : 9
         }
     ]
 }

@@ -13,11 +13,10 @@
     "firstName" : "Lukas",
     "lastName" : "Borges",
     "username" : "lborg019",
-    "e1Status" : "0",
-    "e2Status" : "0",
+    "e1Status" : "1",
+    "e2Status" : "1",
     "state" : "California",
     "type" : "1",
     "ssn" : "666",
-    "hash" : "$2a$10$acUVbvHZ8TP/tT6vssMbvugtxIePMRYDrWdxlCs3eUBNgtO.1mQWO",
-    "voted" : true
+    "hash" : "$2a$10$acUVbvHZ8TP/tT6vssMbvugtxIePMRYDrWdxlCs3eUBNgtO.1mQWO"
 }
