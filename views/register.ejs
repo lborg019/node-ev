@@ -1,0 +1,57 @@
+<%- include('partials/header') %>
+<div class="form-container">
+    <h2>Register</h2>
+    <% if(locals.error) { %>
+        <div class="alert alert-danger"><%= error %></div>
+    <% } %>
+    <form method="post">
+        <div class="form-group">
+            <label for="firstName">First name</label>
+            <input type="text" name="firstName" id="firstName" class="form-control" value="<%= locals.firstName || '' %>" required />
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last name</label>
+            <input type="text" name="lastName" id="lastName" class="form-control" value="<%= locals.lastName || '' %>" required />
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" class="form-control" value="<%= locals.username || '' %>" required />
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label for="ssn">Social Security Number</label>
+            <input type="text" name="ssn" id="ssn" class="form-control" value="<%= locals.ssn || '' %>" required/>
+        </div>
+        <div class="form-group">
+            <label for="state">State</label>
+            <input type="text" name="state" id="state" class="form-control" value="<%= locals.state || '' %>" required/>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Register</button>
+            <a href="/login" class="btn btn-link">Cancel</a>
+        </div>
+
+        <!--[hardcode]: extra fields necessary to make it works-->
+        <!--pass this to the backend if programmming continues-->
+        <!-- user type: 1-->
+        <div class="form-group" style="visibility:hidden">
+            <label for="type">Type (only '1' works currently)</label>
+            <input type="text" name="type" id="type" class="form-control" value="1" required/>
+        </div>
+
+        <!--e1Status: 0-->
+        <div class="form-group" style="visibility:hidden">
+            <label for="e1Status">Election 1 Status: (0, not voted yet)</label>
+            <input type="text" name="e1Status" id="e1Status" class="form-control" value="0" required/>
+        </div>
+        <!--e2Status: 0-->
+        <div class="form-group" style="visibility:hidden">
+            <label for="e2Status">Election 2 Status: (0, not voted yet)</label>
+            <input type="text" name="e2Status" id="e2Status" class="form-control" value="0" required/>
+        </div>        
+    </form>
+</div>
+<%- include('partials/footer') %>

@@ -5,16 +5,18 @@
 	- MongoDB schema
 	- SSL
 */
-//users
-
+/*
+	MongoDB
+	collection name: users
+*/
 {
-  "type": "admin", //registered, unregistered
-  "pid": {
-	"firstName": "John",
-	"lastName": "Doe",
-	"age": 18,
-	"ssn": 111111111,
-	"state": "Florida",
-	"voted": "yes" // 0 or 1 for voted or not voted. access control here
-  }
+    "firstName" : "Lukas",
+    "lastName" : "Borges",
+    "username" : "lborg019",
+    "e1Status" : "1",
+    "e2Status" : "1",
+    "state" : "California",
+    "type" : "1",
+    "ssn" : "666",
+    "hash" : "$2a$10$acUVbvHZ8TP/tT6vssMbvugtxIePMRYDrWdxlCs3eUBNgtO.1mQWO"
 }

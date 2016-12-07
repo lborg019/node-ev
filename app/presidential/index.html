@@ -1,0 +1,66 @@
+<!--header-->
+<ul class="nav nav-tabs">
+    <li ng-class="{active: activeTab === 'home'}"><a ui-sref="home">Home</a></li>
+    <li ng-class="{active: activeTab === 'account'}"><a ui-sref="account">Account</a></li>
+    <li ng-if="vm.user.e1Status==0 || vm.user.e2Status==0" ng-class="{active: activeTab === 'vote'}"><a ui-sref="vote">Vote</a></li>
+    <li><a href="/login" target="_self">Logout</a></li>
+</ul>
+<div class="flash-message" ng-if="flash">
+    <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+</div>
+
+<style>
+.selected{
+    background-color: rgba(70,130,70,0.5); 
+    font-style:italic;
+    color: black;
+}
+</style>
+
+<!-- Ballot -->
+<div ng-controller="candidatesController">
+    <div ng-show="voted && loaded">
+        <h1>Congratulations!</h1>
+        <h2>You voted for the {{eName}}</h2>
+        <button ui-sref="vote" class="btn btn-secondary btn-lg">Back</button>
+    </div>
+
+<div ng-show="!voted && loaded">
+
+    <h1>{{eName}}</h1><!--title-->
+    <p><h4>click to select your candidate:</h4></p>
+    <table class="table table-hover" style="cursor:hand;" >
+        <tr>
+            <th style="visibility: hidden">#</th>
+            <th style="text-align: center"><h4>Candidate</h4></th>
+            <th style="text-align: center"><h4>Name</h4></th>
+            <th style="text-align: center"><h4>Party</h4></th>
+        </tr>
+        <tr ng-repeat="c in candidates" ng-class="{'selected':$index == selectedRow}" ng-click="setClickedRow($index)" role="button">
+            <td style="visibility:hidden">{{$index}}</td>
+            <td style="width:12vmax"><img src={{c.avatar}} style="max-width:150px"></td>
+            <td style="vertical-align: middle; text-align: center" colspan="1"><h3>{{c.name}}</h3></td>
+            <td style="vertical-align: middle; text-align: center" colspan="1"><h3>{{c.party}}</h3></td>
+        </tr>
+    </table>
+
+    <div>
+        <!--selectedRow = {{selectedRow}}-->
+        <h3>Selected candidate: {{candidates[selectedRow].name}}</h3>
+    </div>
+
+    <!-- buttons -->
+    <div style="text-align:center">          
+        <button ng-click="confirm()" class="btn btn-primary btn-lg">Confirm</button>
+        <button ng-click="clearRow()" class="btn btn-secondary btn-lg">Clear</button>
+        <button ui-sref="vote" class="btn btn-secondary btn-lg">Back</button>
+    </div>
+
+</div>
+</div>
+
+<!--<div class="btn-group" role="group" aria-label="...">
+  <button type="button" class="btn btn-default">Left</button>
+  <button type="button" class="btn btn-default">Middle</button>
+  <button type="button" class="btn btn-default">Right</button>
+</div>-->
