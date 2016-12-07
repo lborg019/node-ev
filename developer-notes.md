@@ -35,3 +35,13 @@ Two .json files were already created with tentative schemas for the database
 
 # Pull config file (.conf) from Docker image:
 `sudo docker cp docker-nginx:/etc/nginx/conf.d/default.conf default.conf
+
+# Production notes:
+vim /etc/mongod.conf
+bindIp: 0.0.0.0 for testing
+bindIp: 127.0.0.1 for defaults
+
+# Nginx loadbalances correctly, stepped off from docker because of bugs:
+deleted default symlink @ /etc/nginx/sites-enabled/default
+created load-balancer.conf file
+$ sudo service restart nginx
