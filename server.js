@@ -23,8 +23,8 @@ function serve(ip, port)
 }
 
 serve('127.0.0.1', 3000);
-//serve('127.0.0.1', 3001);
-//serve('127.0.0.1', 3002);
+serve('127.0.0.1', 3001);
+serve('127.0.0.1', 3002);
 */
 
 require('rootpath')();
@@ -35,6 +35,8 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var expressJwt = require('express-jwt');
 var config = require('config.json');
+var http = require('http');
+var httpProxy = require('http-proxy');
  
 app.use(morgan('combined'));//for logging
 app.set('view engine', 'ejs');
@@ -59,6 +61,17 @@ app.get('/', function (req, res) {
 });
  
 // start server
-var server = app.listen(3000, function () {
+/*var server = app.listen(3000, function () {
     console.log('Server listening at http://' + server.address().address + ':' + server.address().port);
-});
+});*/
+
+function serve(ip, port)
+{
+	http.createServer(app).listen(port, ip);
+	//app.listen(port, ip);
+	console.log("Express running on: "+ip+"port: "+port);
+}
+
+serve('104.131.14.10', 3000);
+serve('104.131.14.10', 3001);
+serve('104.131.14.10', 3002);
