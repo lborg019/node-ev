@@ -77,6 +77,9 @@ function create(userParam) {
  
         // add hashed password to user object
         user.hash = bcrypt.hashSync(userParam.password, 10);
+        user.type = "1";
+        user.e1Status = "0";
+        user.e2Status = "0";
  
         db.users.insert(
             user,

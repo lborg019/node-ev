@@ -33,25 +33,6 @@
             <button type="submit" class="btn btn-primary">Register</button>
             <a href="/login" class="btn btn-link">Cancel</a>
         </div>
-
-        <!--[hardcode]: extra fields necessary to make it works-->
-        <!--pass this to the backend if programmming continues-->
-        <!-- user type: 1-->
-        <div class="form-group" style="visibility:hidden">
-            <label for="type">Type (only '1' works currently)</label>
-            <input type="text" name="type" id="type" class="form-control" value="1" required/>
-        </div>
-
-        <!--e1Status: 0-->
-        <div class="form-group" style="visibility:hidden">
-            <label for="e1Status">Election 1 Status: (0, not voted yet)</label>
-            <input type="text" name="e1Status" id="e1Status" class="form-control" value="0" required/>
-        </div>
-        <!--e2Status: 0-->
-        <div class="form-group" style="visibility:hidden">
-            <label for="e2Status">Election 2 Status: (0, not voted yet)</label>
-            <input type="text" name="e2Status" id="e2Status" class="form-control" value="0" required/>
-        </div>        
     </form>
 </div>
 <%- include('partials/footer') %>
