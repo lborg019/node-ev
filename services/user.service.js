@@ -124,9 +124,17 @@ function update(_id, userParam) {
             username: userParam.username,
         };
  
-        // update password if it was entered
-        if (userParam.password) {
-            set.hash = bcrypt.hashSync(userParam.password, 10);
+        // update password if both password and password confirmation were entered
+        if(userParam.password && userParam.cpassword)
+        {
+            if (userParam.password != userParam.cpassword)
+            {
+                deferred.reject('Password fields do not match!')
+            }
+            else // if password and confirmation match, update password:
+            {
+                set.hash = bcrypt.hashSync(userParam.password, 10);
+            }
         }
  
         db.users.update(

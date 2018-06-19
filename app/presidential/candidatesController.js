@@ -21,10 +21,27 @@ myApp.controller('candidatesController', ['$scope', 'ElectionService', 'UserServ
   }
 
   electionService.GetAll().then(function(data) {
+    
     //hardcoded data[0] means presidential elections
-    $scope.eName = data[0].electionname;
-    $scope.candidates = data[0].candidates;
-  });
+    //$scope.eName = data[0].electionname;
+    //$scope.candidates = data[0].candidates;
+
+    flag = 0; // if not found
+    var i;
+    for (i = 0; i < data.length; i++)
+    {
+      if (data[i].electionname == "Presidential election")
+      {
+        $scope.eName = data[i].electionname;
+        $scope.candidates = data[i].candidates;
+        flag = 1;
+      }
+      if(flag == 0)
+      {
+        console.log("Could not find election data in db")
+      }
+    }
+  })
 
   $scope.setClickedRow = function(index){
     $scope.selectedRow = index;
@@ -59,7 +76,7 @@ myApp.controller('candidatesController', ['$scope', 'ElectionService', 'UserServ
   }
 
   $scope.$watch('selectedRow', function(){
-    //console.log('Selected a candidate');
+    console.log('Selected a presidential candidate');
   });
 
 }]);

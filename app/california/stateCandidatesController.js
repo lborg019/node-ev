@@ -25,8 +25,25 @@ myApp.controller('stateCandidatesController', ['$scope', 'ElectionService', 'Use
   electionService.GetAll().then(function(data){
 
     //hardcoded: data[1] means california elections
-    $scope.eName = data[1].electionname;
-    $scope.candidates = data[1].candidates;
+    //$scope.eName = data[1].electionname;
+    //$scope.candidates = data[1].candidates;
+
+    // FIX: instead of hardcoding loop and match:
+    flag = 0; // if not found
+    var i;
+    for (i = 0; i < data.length; i++)
+    {
+      if (data[i].electionname == "California state election")
+      {
+        $scope.eName = data[i].electionname;
+        $scope.candidates = data[i].candidates;
+        flag = 1;
+      }
+    }
+    if (flag == 0)
+    {
+      console.log("Could not find election data in db")
+    }
   })
 
   $scope.setClickedRow = function(index){
@@ -62,7 +79,7 @@ myApp.controller('stateCandidatesController', ['$scope', 'ElectionService', 'Use
   }
 
   $scope.$watch('selectedRow', function(){
-    console.log('Selected a candidate');
+    console.log('Selected a california state candidate');
   });
 
 }]);
